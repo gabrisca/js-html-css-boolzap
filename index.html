@@ -84,6 +84,7 @@
         </div>
       </header>
       <section>
+
         <div class="msg msg-friend">
           <p>Hai portato a spasso il cane?</p>
           <p class="received">10/01/2020 15:30:55</p>
@@ -101,10 +102,16 @@
           <p class="received">10/01/2020 16:15:22</p>
           <i class="fas fa-chevron-down"></i>
         </div>
+
       </section>
       <footer>
         <a href="#"><i class="far fa-smile"></i></a>
-        <input type="text" placeholder="Scrivi un messaggio">
+        <input
+          v-model="msgUtente" 
+          @keyup.enter="addMsg"
+          type="text" 
+          placeholder="Scrivi un messaggio"
+        >
         <a href="#"><i class="fas fa-microphone"></i></i></a>
       </footer>
     </main>

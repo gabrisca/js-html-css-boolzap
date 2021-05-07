@@ -1,7 +1,10 @@
 const app = new Vue({
   el: "#app",
   data: {
-    activeIndex: 0,
+    // activeIndex: 0,
+    myChat: "",
+    msgUtente: "",
+    activeUser: 0,
     contacts: [
       {
         name: 'Michele',
