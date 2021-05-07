@@ -55,23 +55,13 @@
           <ul>
             <li 
             v-for="(contact, index) in contacts"
-            :class="">
-              <img :src=" 'assets/img/avatar' + contact.avatar + '.jpg'" alt="">
+            >
+            <!-- option 1 -->
+              <!-- <img :src=" 'assets/img/avatar' + contact.avatar + '.jpg'" alt=""> -->
+            <!-- option 2: funzione getAvatar -->
+              <img :src="getAvatar(index)" alt="">
               <span>{{contact.name}}</span> 
             </li>
-            
-            <!-- <li>
-              <img src="assets/img/avatar_2.jpg" alt="avatar_2">
-              <span>Fabio</span>
-            </li>
-            <li>
-              <img src="assets/img/avatar_3.jpg" alt="avatar_3">
-              <span>Emanuele</span>
-            </li>
-            <li>
-              <img src="assets/img/avatar_4.jpg" alt="avatar_4">
-              <span>Luisa</span>
-            </li> -->
           </ul>
         </div>
       </section>

@@ -89,6 +89,8 @@ const app = new Vue({
     ]
   },
   methods: {
-  
+    getAvatar(index){
+      return `assets/img/avatar${this.contacts[index].avatar}.jpg`
+    },
   },
 })
