@@ -112,6 +112,7 @@ body {
 }
 
 .container .left section.notice {
+  width: 100%;
   height: 80px;
   padding: 10px;
   background-color: #8EDAFC;
@@ -140,6 +141,10 @@ body {
   color: #5D8BA0;
 }
 
+.container .left section.notice .notice-text a:hover{
+  color: #4e5052;
+}
+
 .container .left section.user {
   background-color: #FAFAFA;
   padding-top: 5px;
@@ -157,9 +162,14 @@ body {
 }
 
 .container .left .user .search i {
-  color: #B6B9BB;
   width: 10%;
+  color: #B6B9BB;
   text-align: center;
+  cursor: pointer;
+}
+
+.container .left .user .search i:hover{
+  color: #4e5052;
 }
 
 .container .left .user .search input {
