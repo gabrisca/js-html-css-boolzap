@@ -1,4 +1,5 @@
 /* GENERAL */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -21,6 +22,7 @@ body {
 }
 
 /* MY CLASSES */
+
 .clearfix {
   content: "";
   display: table;
@@ -32,6 +34,7 @@ body {
 }
 
 /* APP */
+
 .container {
   flex-basis: 80%;
   min-width: 900px;
@@ -46,11 +49,14 @@ body {
 }
 
 /* CONTAINER LEFT*/
+
 .container .left {
   width: 35%;
   background-color: white;
   border-right: 1px solid rgba(128, 128, 128, 0.397);
 }
+
+/* CONTAINER LEFT HEADER */
 
 .container .left header {
   width: 100%;
@@ -103,6 +109,8 @@ body {
 .container .left header .header-right ul li i:hover {
   color: #4e5052;
 }
+
+/* CONTAINER LEFT SECTION */
 
 .container .left section.notice {
   width: 100%;
@@ -177,6 +185,8 @@ body {
   outline: none;
 }
 
+/* CONTAINER LEFT UL */
+
 .container .left .user .ul-cont {
   width: 98%;
   height: calc(100vh - 250px);
@@ -220,6 +230,7 @@ body {
 }
 
 /* CONTAINER RIGHT */
+
 .container .right {
   width: 65%;
 }
@@ -228,6 +239,8 @@ body {
 .container .right footer {
   height: 70px;
 }
+
+/* CONTAINER RIGHT HEADER */
 
 .container .right header {
   background-color: #eaeaea;
@@ -287,11 +300,68 @@ body {
   color: #4e5052;
 }
 
+/* CONTAINER RIGHT SECTION */
+
 .container .right section {
   height: calc(100% - 140px);
   background-image: url(../img/mine.jpg);
+  padding: 50px;
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
 }
+
+.container .right section .msg {
+  min-width: 50px;
+  min-height: 50px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 12px;
+  padding-right: 50px;
+  background-color: violet;
+  margin: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.container .right section .msg p:nth-child(1) {
+  margin-bottom: 8px;
+}
+
+.container .right section .msg p:nth-child(2) {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  color: #4e5052a8;
+  font-size: 0.6em;
+  text-align: right;
+}
+
+.container .right section .msg i {
+  color: #b6b9bb;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  display: none;
+}
+
+.container .right section .msg:hover i {
+  display: block;
+}
+
+.container .right section .msg.msg-friend {
+  position: relative;
+  background-color: #D5F9BA;
+  margin-left: auto;
+}
+
+.container .right section .msg.msg-user{
+  position: relative;
+  background-color: white;
+  margin-right: auto;
+}
+
+/* CONTAINER RIGHT FOOTER */
 
 .container .right footer {
   background-color: #f3eeea;
