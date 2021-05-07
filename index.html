@@ -53,11 +53,14 @@
         </div>
         <div class="ul-cont">
           <ul>
-            <li>
-              <img src="assets/img/avatar_1.jpg" alt="avatar_1">
-              <span>Michele</span>
+            <li 
+            v-for="(contact, index) in contacts"
+            :class="">
+              <img :src=" 'assets/img/avatar' + contact.avatar + '.jpg'" alt="">
+              <span>{{contact.name}}</span> 
             </li>
-            <li>
+            
+            <!-- <li>
               <img src="assets/img/avatar_2.jpg" alt="avatar_2">
               <span>Fabio</span>
             </li>
@@ -68,7 +71,7 @@
             <li>
               <img src="assets/img/avatar_4.jpg" alt="avatar_4">
               <span>Luisa</span>
-            </li>
+            </li> -->
           </ul>
         </div>
       </section>

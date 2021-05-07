@@ -268,15 +268,12 @@ body {
   color: #4e5052a8;
 }
 
+
 .container .right header .header-right {
   width: 30%;
   height: 100%;
-}
-
-.container .right header .header-right {
-  width: 35%;
-  height: 100%;
   padding: 10px;
+  padding-right: 30px;
 }
 
 .container .right header .header-right ul {
