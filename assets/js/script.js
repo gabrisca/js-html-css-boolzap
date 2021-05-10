@@ -177,14 +177,12 @@ const app = new Vue({
       let newMsg = this.contacts[index].messages[this.contacts[index].messages.length-1].text
       return newMsg.substring(0, 15) + "..."
     },
-    // funzione per cercare un nome nell'ul
-    fSearch(){
+    // funzione per cercare un nome nell'ul !! da completare
+    fSearch(index){
       console.log(this.searchName);
       let trovato = false
-      if(this.searchName === this.contacts.name){
+      if(this.searchName == this.contacts[index].name){
         trovato = true
-      } else {
-        trovato = "Nein"
       }
       console.log(trovato);
       this.searchName = ""
