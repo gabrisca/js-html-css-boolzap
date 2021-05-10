@@ -179,7 +179,15 @@ const app = new Vue({
     },
     // funzione per cercare un nome nell'ul
     fSearch(){
-
+      console.log(this.searchName);
+      let trovato = false
+      if(this.searchName === this.contacts.name){
+        trovato = true
+      } else {
+        trovato = "Nein"
+      }
+      console.log(trovato);
+      this.searchName = ""
     },
   },
 });
