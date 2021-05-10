@@ -16,7 +16,6 @@
 const app = new Vue({
   el: "#app",
   data: {
-    // activeIndex: 0,
     msgUtente: "",
     activeUser: 0,
     notice: false,
@@ -123,6 +122,7 @@ const app = new Vue({
     },
     // funzione che aggiunge la data (la richiamo nella funzione addMsg)
     // si puà usare anche day.js (vedi documentazione)
+    // -!!!!!! sostituita con days.js !!!!!---
     addDate() {
       const date = new Date();
       let day = date.getDate();
@@ -150,15 +150,15 @@ const app = new Vue({
       this.contacts[index].messages.push({
         text: this.msgUtente,
         status: "sent",
-        date: this.addDate(),
+        date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
       });
       this.msgUtente = "";
       // imposto un messaggio standard con status received che compare dopo 1 secondo
       setTimeout(() => {
       this.contacts[index].messages.push({
-        text: "Ok",
+        text: "Ok \ud83d\ude09",
         status: "received",
-        date: this.addDate(),
+        date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
       });
     }, 1000);
     },
@@ -171,6 +171,11 @@ const app = new Vue({
       // if(this.contacts[index].messages[this.contacts[index].messages.length-1].status === "received"){
         return this.contacts[index].messages[this.contacts[index].messages.length-1].date
       // }
+    },
+    // funzione che restituisce i primi n(15) caratteri della proprietà text di utente attivo
+    lastMsgText(index){
+      let newMsg = this.contacts[index].messages[this.contacts[index].messages.length-1].text
+      return newMsg.substring(0, 15) + "..."
     },
     // funzione per cercare un nome nell'ul
     fSearch(){

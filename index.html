@@ -20,8 +20,12 @@
 </head>
 
 <body>
+    <!-- >>>>>>>>>> START #APP -->
   <div id="app" class="container">
+
+    <!-- /* CONTAINER LEFT*/ -->
     <aside class="left">
+      <!-- container left HEADER -->
       <header>
         <div class="header-left float-left">
           <!-- aggiungo dinamicamente l'avatar utente -->
@@ -38,6 +42,9 @@
           </ul>
         </div>
       </header>
+      <!-- end of container left HEADER -->
+
+      <!-- container left SECTION NOTICE-->
       <section class="notice clearfix">
         <!-- al click cambio il font awsome... -->
         <div @click="sendNot()" class="notice-logo float-left">
@@ -50,6 +57,9 @@
           <a href="#">Attiva notifiche desktop</a>
         </div>
       </section>
+      <!-- end of container left SECTION NOTICE-->
+
+      <!-- container left SECTION USER -->
       <section class="user">
         <div class="search">
           <i class="fas fa-search"></i>
@@ -69,13 +79,18 @@
               <!-- option 2: funzione getAvatar -->
               <img :src="getAvatar(index)" :alt="contact.name">
               <span>{{contact.name}}</span>
-              <div class="ultimo-accesso">{{lastMsgDate(index)}}</div>
-              <div class="ultimo-msg">ultimo messaggio</div>
+              <div
+               class="ultimo-accesso">{{lastMsgDate(index)}}</div>
+              <div class="ultimo-msg">{{lastMsgText(index)}}</div>
             </li>
           </ul>
         </div>
       </section>
+      <!-- end of container left MAIN SECTION -->
     </aside>
+    <!-- end of container left SECTION USER -->
+
+    <!-- /* CONTAINER RIGHT */ -->
     <main class="right">
       <header>
         <div class="header-left">
@@ -127,6 +142,8 @@
         </div>  -->
 
       </section>
+
+    <!-- /* FOOTER */ -->
       <footer>
         <a href="#"><i class="far fa-smile"></i></a>
         <!-- 1 collego il campo input alla variabile msgUtente -->
@@ -138,12 +155,15 @@
         placeholder="Scrivi un messaggio">
         <a href="#"><i class="fas fa-microphone"></i></i></a>
       </footer>
+    <!-- /* FOOTER */ -->
+
     </main>
+    <!-- /* end of CONTAINER RIGHT */ -->
   </div>
+  <!-- >>>>>>>>>> END #APP -->
   <!-- day.js -->
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.4/dayjs.min.js"></script>
   <!-- script.js -->
   <script src="assets/js/script.js"></script>
 </body>
-
 </html>
