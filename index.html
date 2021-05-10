@@ -24,8 +24,9 @@
     <aside class="left">
       <header>
         <div class="header-left float-left">
-          <img src="assets/img/avatar_io.jpg" alt="mio avatar">
-          <span>Nome Utente</span>
+          <!-- aggiungo dinamicamente l'avatar utente -->
+          <img :src="'assets/img/avatar' + user.avatar + '.jpg'" :alt="user.name">
+          <span>{{user.name}}</span>
         </div>
         <div class="header-right float-left">
           <ul>
@@ -38,8 +39,11 @@
         </div>
       </header>
       <section class="notice clearfix">
-        <div class="notice-logo float-left">
-          <i class="fas fa-bell-slash"></i>
+        <!-- al click cambio il font awsome... -->
+        <div @click="sendNot()" class="notice-logo float-left">
+          <!-- ...grazie all'utilizzo di un flag -->
+          <i v-if="notice === false" class="fas fa-bell-slash"></i>
+          <i v-else class="fas fa-bell"></i>
         </div>
         <div class="notice-text float-left">
           <p>Ricevi notifiche di nuovi messaggi</p>
@@ -49,18 +53,24 @@
       <section class="user">
         <div class="search">
           <i class="fas fa-search"></i>
-          <input type="text" placeholder="Cerca o inizia una nuova chat">
+          <input 
+          v-model="searchName"
+          type="text" 
+          placeholder="Cerca o inizia una nuova chat">
         </div>
         <div class="ul-cont">
           <ul>
-            <li 
-            v-for="(contact, index) in contacts"
-            >
-            <!-- option 1 -->
+            <!-- 1 con ciclo v-for vedo e aggiungo dinamicamente gli ogetti dell'array contacts -->
+            <!-- 2 al click richiamo la funzione seeMyChat per vedere la chat dell'utente selezionato (vedi activeUser)-->
+            <li v-for="(contact, index) in contacts" @click="seeMyChat(index)">
+              <!-- aggiungo dinamicamente gli avatar -->
+              <!-- option 1 -->
               <!-- <img :src=" 'assets/img/avatar' + contact.avatar + '.jpg'" alt=""> -->
-            <!-- option 2: funzione getAvatar -->
-              <img :src="getAvatar(index)" alt="">
-              <span>{{contact.name}}</span> 
+              <!-- option 2: funzione getAvatar -->
+              <img :src="getAvatar(index)" :alt="contact.name">
+              <span>{{contact.name}}</span>
+              <div class="ultimo-accesso">{{lastMsgDate(index)}}</div>
+              <div class="ultimo-msg">ultimo messaggio</div>
             </li>
           </ul>
         </div>
@@ -69,10 +79,12 @@
     <main class="right">
       <header>
         <div class="header-left">
-          <img src="assets/img/avatar_1.jpg" alt="avatar_1">
+          <!-- aggiungo dinamicamente l'avatar dell'utente attivo -->
+          <img :src="getAvatar(activeUser)" :alt="contacts[activeUser].name">
           <div class="hr-text">
-            <p>Michele</p>
-            <p>ultimo accesso oggi alle</p>
+            <p>{{contacts[activeUser].name}}</p>
+            <p>ultimo accesso: {{lastMsgDate(activeUser)}}</p>
+            <!-- <p>ultimo accesso: {{contacts[activeUser].messages[lastMsgDate()].date}}</p> -->
           </div>
         </div>
         <div class="header-right">
@@ -84,38 +96,53 @@
         </div>
       </header>
       <section>
+        <!-- ciclo v-for per vedere i contenuti dell'oggetto(array) messages dentro contacts-->
+        <div v-for="(message,index) in contacts[activeUser].messages" class="msg"
+          :class="(message.status === 'received') ? 'sent' : 'received'">
+          <p>
+            {{message.text}}
+          </p>
+          <p>
+            {{message.date}}
+          </p>
+          <i class="fas fa-chevron-down"></i>
+        </div>
 
-        <div class="msg msg-friend">
+        <!-- <div class="msg received">
           <p>Hai portato a spasso il cane?</p>
-          <p class="received">10/01/2020 15:30:55</p>
+          <p>10/01/2020 15:30:55</p>
           <i class="fas fa-chevron-down"></i>
         </div>
 
-        <div class="msg msg-friend">
+        <div class="msg received">
           <p>Ricordati di dargli da mangiare</p>
-          <p class="received">10/01/2020 15:50:00</p>
+          <p>10/01/2020 15:50:00</p>
           <i class="fas fa-chevron-down"></i>
         </div>
 
-        <div class="msg msg-user">
+        <div class="msg sent">
           <p>Tutto fatto!</p>
-          <p class="received">10/01/2020 16:15:22</p>
+          <p>10/01/2020 16:15:22</p>
           <i class="fas fa-chevron-down"></i>
-        </div>
+        </div>  -->
 
       </section>
       <footer>
         <a href="#"><i class="far fa-smile"></i></a>
-        <input
-          v-model="msgUtente" 
-          @keyup.enter="addMsg"
-          type="text" 
-          placeholder="Scrivi un messaggio"
-        >
+        <!-- 1 collego il campo input alla variabile msgUtente -->
+        <!-- 2 al keyup su invio attivo la funzione addMsg -->
+        <input 
+        v-model="msgUtente" 
+        @keyup.enter="addMsg(activeUser)" 
+        type="text" 
+        placeholder="Scrivi un messaggio">
         <a href="#"><i class="fas fa-microphone"></i></i></a>
       </footer>
     </main>
   </div>
+  <!-- day.js -->
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.4/dayjs.min.js"></script>
+  <!-- script.js -->
   <script src="assets/js/script.js"></script>
 </body>
 

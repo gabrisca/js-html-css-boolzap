@@ -229,6 +229,24 @@ body {
   top: 8px;
 }
 
+.container .left .user .ul-cont ul li div.ultimo-accesso {
+  position: absolute;
+  top: 12px;
+  right: 5px;
+  color: #4e5052a8;
+  font-size: 0.6em;
+  text-align: right;
+}
+
+.container .left .user .ul-cont ul li div.ultimo-msg {
+  position: absolute;
+  top: 50%;
+  left: 80px;
+  color: #4e5052a8;
+  font-size: 0.8em;
+  text-align: right;
+}
+
 /* CONTAINER RIGHT */
 
 .container .right {
@@ -267,7 +285,6 @@ body {
 .container .right header .header-left .hr-text p:nth-child(2) {
   color: #4e5052a8;
 }
-
 
 .container .right header .header-right {
   width: 30%;
@@ -308,24 +325,25 @@ body {
   flex-direction: column;
 }
 
-.container .right section .msg {
+.msg {
   min-width: 150px;
   min-height: 50px;
   padding-top: 12px;
   padding-bottom: 12px;
   padding-left: 12px;
   padding-right: 50px;
-  background-color: violet;
-  margin: 20px;
   border-radius: 10px;
   cursor: pointer;
+  position: relative;
+  margin-bottom: 10px;
+  background-color: violet;
 }
 
-.container .right section .msg p:nth-child(1) {
+.msg p:nth-child(1) {
   margin-bottom: 8px;
 }
 
-.container .right section .msg p:nth-child(2) {
+.msg p:nth-child(2) {
   position: absolute;
   right: 5px;
   bottom: 5px;
@@ -334,7 +352,7 @@ body {
   text-align: right;
 }
 
-.container .right section .msg i {
+.msg i {
   color: #b6b9bb;
   position: absolute;
   top: 15px;
@@ -342,20 +360,18 @@ body {
   display: none;
 }
 
-.container .right section .msg:hover i {
+.msg:hover i {
   display: block;
 }
 
-.container .right section .msg.msg-friend {
-  position: relative;
-  background-color: #D5F9BA;
-  margin-left: auto;
-}
-
-.container .right section .msg.msg-user{
-  position: relative;
+.sent {
   background-color: white;
   margin-right: auto;
+}
+
+.received {
+  background-color: #D5F9BA;
+  margin-left: auto;
 }
 
 /* CONTAINER RIGHT FOOTER */
