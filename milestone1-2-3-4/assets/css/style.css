@@ -33,6 +33,10 @@ body {
   float: left;
 }
 
+.active {
+  background-color: rgba(221, 211, 211, 0.671);
+}
+
 /* APP */
 
 .container {
@@ -205,13 +209,13 @@ body {
   position: relative;
   height: 80px;
   padding: 10px;
-  background-color: white;
+  /* background-color: white; */
   border-bottom: 1px solid #f5f5f5;
   cursor: pointer;
 }
 
 .container .left .user .ul-cont ul li:hover {
-  background-color: rgba(221, 211, 211, 0.192);
+  /* background-color: rgba(221, 211, 211, 0.192); */
 }
 
 .container .left .user .ul-cont ul li:last-child {

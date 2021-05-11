@@ -29,7 +29,9 @@
       <header>
         <div class="header-left float-left">
           <!-- aggiungo dinamicamente l'avatar utente -->
-          <img :src="'assets/img/avatar' + user.avatar + '.jpg'" :alt="user.name">
+          <img 
+             :src="'assets/img/avatar' + user.avatar + '.jpg'" :alt="user.name"
+          >
           <span>{{user.name}}</span>
         </div>
         <div class="header-right float-left">
@@ -47,7 +49,10 @@
       <!-- container left SECTION NOTICE-->
       <section class="notice clearfix">
         <!-- al click cambio il font awsome... -->
-        <div @click="sendNot()" class="notice-logo float-left">
+        <div 
+           @click="sendNote()" 
+           class="notice-logo float-left"
+        >
           <!-- ...grazie all'utilizzo di un flag -->
           <i v-if="notice === false" class="fas fa-bell-slash"></i>
           <i v-else class="fas fa-bell"></i>
@@ -64,21 +69,30 @@
         <div class="search">
           <i class="fas fa-search"></i>
           <input 
-          v-model="searchName"
-          @keyup.enter="fSearch(activeUser)"
-          type="text" 
-          placeholder="Cerca o inizia una nuova chat">
+             v-model="searchName"
+             @keyup.enter="fSearch()"
+             type="text" 
+             placeholder="Cerca o inizia una nuova chat"
+          >
         </div>
         <div class="ul-cont">
           <ul>
             <!-- 1 con ciclo v-for vedo e aggiungo dinamicamente gli ogetti dell'array contacts -->
             <!-- 2 al click richiamo la funzione seeMyChat per vedere la chat dell'utente selezionato (vedi activeUser)-->
-            <li v-for="(contact, index) in contacts" @click="seeMyChat(index)">
+            <li 
+              v-for="(contact, index) in contacts" 
+              v-if="contact.visible === true"
+              @click="seeMyChat(index)"
+              :class="{'active' : activeUser === index}"
+            >
               <!-- aggiungo dinamicamente gli avatar -->
               <!-- option 1 -->
               <!-- <img :src=" 'assets/img/avatar' + contact.avatar + '.jpg'" alt=""> -->
               <!-- option 2: funzione getAvatar -->
-              <img :src="getAvatar(index)" :alt="contact.name">
+              <img 
+                  :src="getAvatar(index)" 
+                  :alt="contact.name"
+              >
               <span>{{contact.name}}</span>
               <div
                class="ultimo-accesso">{{lastMsgDate(index)}}</div>
@@ -96,7 +110,10 @@
       <header>
         <div class="header-left">
           <!-- aggiungo dinamicamente l'avatar dell'utente attivo -->
-          <img :src="getAvatar(activeUser)" :alt="contacts[activeUser].name">
+          <img 
+              :src="getAvatar(activeUser)" 
+              :alt="contacts[activeUser].name"
+          >
           <div class="hr-text">
             <p>{{contacts[activeUser].name}}</p>
             <p>ultimo accesso: {{lastMsgDate(activeUser)}}</p>
@@ -113,8 +130,11 @@
       </header>
       <section>
         <!-- ciclo v-for per vedere i contenuti dell'oggetto(array) messages dentro contacts-->
-        <div v-for="(message,index) in contacts[activeUser].messages" class="msg"
-          :class="(message.status === 'received') ? 'sent' : 'received'">
+        <div 
+            v-for="(message,index) in contacts[activeUser].messages" 
+            class="msg"
+            :class="(message.status === 'received') ? 'sent' : 'received'"
+        >
           <p>
             {{message.text}}
           </p>
@@ -150,10 +170,11 @@
         <!-- 1 collego il campo input alla variabile msgUtente -->
         <!-- 2 al keyup su invio attivo la funzione addMsg -->
         <input 
-        v-model="msgUtente" 
-        @keyup.enter="addMsg(activeUser)" 
-        type="text" 
-        placeholder="Scrivi un messaggio">
+           v-model="msgUtente" 
+           @keyup.enter="addMsg(activeUser)" 
+           type="text" 
+           placeholder="Scrivi un messaggio"
+        >
         <a href="#"><i class="fas fa-microphone"></i></i></a>
       </footer>
     <!-- /* FOOTER */ -->

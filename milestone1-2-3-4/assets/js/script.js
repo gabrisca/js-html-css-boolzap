@@ -122,7 +122,7 @@ const app = new Vue({
     },
     // funzione che aggiunge la data (la richiamo nella funzione addMsg)
     // si puà usare anche day.js (vedi documentazione)
-    // -!!!!!! sostituita con days.js !!!!!---
+    // -!!!!!! sostituita con day.js !!!!!---
     addDate() {
       const date = new Date();
       let day = date.getDate();
@@ -150,48 +150,57 @@ const app = new Vue({
       this.contacts[index].messages.push({
         text: this.msgUtente,
         status: "sent",
-        date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
+        date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
       });
       this.msgUtente = "";
       // imposto un messaggio standard con status received che compare dopo 1 secondo
       setTimeout(() => {
-      this.contacts[index].messages.push({
-        text: "Ok \ud83d\ude09",
-        status: "received",
-        date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
-      });
-    }, 1000);
+        this.contacts[index].messages.push({
+          text: "Ok \ud83d\ude09",
+          status: "received",
+          date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
+        });
+      }, 1000);
     },
     // funzione che trasforma notice nel suo contrario. La applico al click sulla sezione notice-logo (HTML) e con un v-if mostro un font awsome al posto dell'altro
-    sendNot() {
+    sendNote() {
       this.notice = !this.notice;
     },
     // funzione che restituisce la proprietà date dell'ultimo messaggio "received". Utilizzo filter per ottenere un nuovo array dove salvo solo messages con status receive
     lastMsgDate(index) {
-        const newArray = this.contacts[index].messages.filter((messages)=>{
-          // console.log(messages.date);
-          if( messages.status === "received")
-           return messages.date
-        })
-        console.log(newArray);
-
-        return newArray[newArray.length-1].date
+      const newArray = this.contacts[index].messages.filter((message) => {
+        // console.log(messages.date);
+        if (message.status === "received") return message.date;
+      });
+      // console.log(newArray);
+      return newArray[newArray.length - 1].date;
     },
     // funzione che restituisce i primi n(15) caratteri della proprietà text di utente attivo
-    lastMsgText(index){     
-      let newMsg = this.contacts[index].messages[this.contacts[index].messages.length-1].text
-      return newMsg.substring(0, 15) + "..."
+    lastMsgText(index) {
+      let newMsg =
+        this.contacts[index].messages[this.contacts[index].messages.length - 1]
+          .text;
+      return newMsg.substring(0, 15) + "...";
     },
-    // funzione per cercare un nome nell'ul !! da completare
-    fSearch(index){
-      console.log(this.searchName);
-      let trovato = false
-      if(this.searchName == this.contacts[index].name){
-        trovato = true
-      }
-      console.log(trovato);
-      this.searchName = ""
+    // funzione per cercare un nome nell'ul !!!filter
+    fSearch() {
+      // trasformo il valore inserito in searchName in maiuscolo
+      this.searchName = this.searchName.toUpperCase();
+      // filtro l'array contacts in un nuovo array
+      const newArray = this.contacts.filter((contact) => {
+        if (contact.name.toUpperCase().includes(this.searchName)) {
+          // se il valore cercato è incluso...
+          contact.visible = true;
+          return true;
+        } else {
+          // ...altrimenti visibile diventa false
+          contact.visible = false;
+          return false;
+        }
+      });
+      // alla fine resetto il valore di searchName
+      this.searchName = "";
+      console.log(newArray);
     },
-
   },
 });
