@@ -368,12 +368,12 @@ body {
   display: block;
 }
 
-.sent {
+.received {
   background-color: white;
   margin-right: auto;
 }
 
-.received {
+.sent {
   background-color: #D5F9BA;
   margin-left: auto;
 }

@@ -133,7 +133,7 @@
         <div 
             v-for="(message,index) in contacts[activeUser].messages" 
             class="msg"
-            :class="(message.status === 'received') ? 'sent' : 'received'"
+            :class="(message.status === 'received') ? 'received' : 'sent'"
         >
           <p>
             {{message.text}}
