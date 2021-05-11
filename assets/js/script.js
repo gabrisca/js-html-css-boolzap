@@ -166,14 +166,19 @@ const app = new Vue({
     sendNot() {
       this.notice = !this.notice;
     },
-    // funzione che restituisce la proprietà date dell'ultimo messaggio
+    // funzione che restituisce la proprietà date dell'ultimo messaggio "received". Utilizzo filter per ottenere un nuovo array dove salvo solo messages con status receive
     lastMsgDate(index) {
-      // if(this.contacts[index].messages[this.contacts[index].messages.length-1].status === "received"){
-        return this.contacts[index].messages[this.contacts[index].messages.length-1].date
-      // }
+        const newArray = this.contacts[index].messages.filter((messages)=>{
+          // console.log(messages.date);
+          if( messages.status === "received")
+           return messages.date
+        })
+        console.log(newArray);
+
+        return newArray[newArray.length-1].date
     },
     // funzione che restituisce i primi n(15) caratteri della proprietà text di utente attivo
-    lastMsgText(index){
+    lastMsgText(index){     
       let newMsg = this.contacts[index].messages[this.contacts[index].messages.length-1].text
       return newMsg.substring(0, 15) + "..."
     },
@@ -187,5 +192,6 @@ const app = new Vue({
       console.log(trovato);
       this.searchName = ""
     },
+
   },
 });
