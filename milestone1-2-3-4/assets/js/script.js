@@ -109,6 +109,7 @@ const app = new Vue({
         ],
       },
     ],
+    // array di risposte che poi rendo automatiche e random con funzione addMsg
     risposte: [
       "Perfetto! \ud83d\ude4c ",
       "Non sono d'accordo",
@@ -116,11 +117,11 @@ const app = new Vue({
       "Marmellata \ud83d\ude0e",
       "OMG \ud83d\ude31",
       "A domani",
-      "Ok \ud83d\ude09"
+      "Ok \ud83d\ude09",
     ],
   },
   methods: {
-    // funzione che carica dinamicamente gli avatr
+    // funzione che carica dinamicamente gli avatar
     getAvatar(index) {
       return `assets/img/avatar${this.contacts[index].avatar}.jpg`;
     },
@@ -156,7 +157,7 @@ const app = new Vue({
     },
     // funzione che fa il push dentro l'array messages di msgUtente, dello status e di date
     addMsg(index) {
-      if(this.msgUtente.length>0){
+      if (this.msgUtente.length > 0) {
         this.contacts[index].messages.push({
           text: this.msgUtente,
           status: "sent",
@@ -166,7 +167,9 @@ const app = new Vue({
         // imposto un messaggio standard con status received che compare dopo 1 secondo
         setTimeout(() => {
           this.contacts[index].messages.push({
-            text: this.risposte[Math.floor(Math.random() * this.risposte.length)],
+            text: this.risposte[
+              Math.floor(Math.random() * this.risposte.length)
+            ],
             status: "received",
             date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
           });

@@ -30,8 +30,8 @@
         <div class="header-left float-left">
           <!-- aggiungo dinamicamente l'avatar utente -->
           <img 
-             :src="'assets/img/avatar' + user.avatar + '.jpg'" 
-             :alt="user.name"
+            :src="'assets/img/avatar' + user.avatar + '.jpg'" 
+            :alt="user.name"
           >
           <span>{{user.name}}</span>
         </div>
@@ -51,8 +51,8 @@
       <section class="notice clearfix">
         <!-- al click cambio il font awsome... -->
         <div 
-           @click="sendNote()" 
-           class="notice-logo float-left"
+          @click="sendNote()" 
+          class="notice-logo float-left"
         >
           <!-- ...grazie all'utilizzo di un flag -->
           <i v-if="notice === false" class="fas fa-bell-slash"></i>
@@ -60,7 +60,12 @@
         </div>
         <div class="notice-text float-left">
           <p>Ricevi notifiche di nuovi messaggi</p>
-          <a href="#">Attiva notifiche desktop</a>
+          <a 
+            href="#"
+            @click="sendNote()"
+          >
+          Attiva notifiche desktop
+        </a>
         </div>
       </section>
       <!-- end of container left SECTION NOTICE-->
@@ -70,10 +75,10 @@
         <div class="search">
           <i class="fas fa-search"></i>
           <input 
-             v-model.trim="searchName"
-             @keyup.enter="fSearch()"
-             type="text" 
-             placeholder="Cerca o inizia una nuova chat"
+            v-model.trim="searchName"
+            @keyup.enter="fSearch()"
+            type="text" 
+            placeholder="Cerca o inizia una nuova chat"
           >
         </div>
         <div class="ul-cont">
@@ -91,8 +96,8 @@
               <!-- <img :src=" 'assets/img/avatar' + contact.avatar + '.jpg'" alt=""> -->
               <!-- option 2: funzione getAvatar -->
               <img 
-                  :src="getAvatar(index)" 
-                  :alt="contact.name"
+                :src="getAvatar(index)" 
+                :alt="contact.name"
               >
               <span>{{contact.name}}</span>
               <div
@@ -112,8 +117,8 @@
         <div class="header-left">
           <!-- aggiungo dinamicamente l'avatar dell'utente attivo -->
           <img 
-              :src="getAvatar(activeUser)" 
-              :alt="contacts[activeUser].name"
+            :src="getAvatar(activeUser)" 
+            :alt="contacts[activeUser].name"
           >
           <div class="hr-text">
             <p>{{contacts[activeUser].name}}</p>
@@ -132,9 +137,9 @@
       <section>
         <!-- ciclo v-for per vedere i contenuti dell'oggetto(array) messages dentro contacts-->
         <div 
-            v-for="(message,index) in contacts[activeUser].messages" 
-            class="msg"
-            :class="(message.status === 'received') ? 'received' : 'sent'"
+          v-for="(message,index) in contacts[activeUser].messages" 
+          class="msg"
+          :class="(message.status === 'received') ? 'received' : 'sent'"
         >
           <p>
             {{message.text}}
@@ -172,10 +177,10 @@
         <!-- 2 al keyup su invio attivo la funzione addMsg -->
         <!-- .trim troglie gli spazi in eccesso -->
         <input 
-           v-model.trim="msgUtente" 
-           @keyup.enter="addMsg(activeUser)" 
-           type="text" 
-           placeholder="Scrivi un messaggio"
+          v-model.trim="msgUtente" 
+          @keyup.enter="addMsg(activeUser)" 
+          type="text" 
+          placeholder="Scrivi un messaggio"
         >
         <a href="#"><i class="fas fa-microphone"></i></i></a>
       </footer>
