@@ -380,13 +380,14 @@ body {
 
 .remove {
   background-color: rgb(255, 255, 255);
-  border: 1px solid rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.178);
   border-radius: 10px;
   width: 150px;
   position: absolute;
   right: 5%;
   bottom: -40px;
   z-index: 1;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
 }
 
 .remove ul {

@@ -157,7 +157,7 @@
             {{message.date}}
           </p>
           <i class="fas fa-chevron-down"
-            @click="removeIt()"
+            @click="removeIt(index)"
           ></i>
           <div 
             v-if="removeMenu === true" 
@@ -165,7 +165,11 @@
           >
             <ul>
               <li>info</li>
-              <li @click="removeMsg(activeUser)">elimina messaggio</li>
+              <li 
+                @click=""
+              >
+              elimina messaggio
+            </li>
             </ul>
           </div>
         </div>

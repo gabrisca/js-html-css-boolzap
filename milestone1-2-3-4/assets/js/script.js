@@ -181,11 +181,11 @@ const app = new Vue({
     sendNote() {
       this.notice = !this.notice;
     },
-    removeIt(){
-      this.removeMenu = !this.removeMenu
-    },
-    removeMsg(){
-      this.contacts[index].messages[this.contacts[index].messages].splice(index,1)
+    removeIt(index){
+      if(this.contacts[this.activeUser].messages[index].text){
+        this.removeMenu = !this.removeMenu
+      }
+        console.log(this.contacts[this.activeUser].messages[index].text);
     },
     // funzione che restituisce la proprietà date dell'ultimo messaggio "received". Utilizzo filter per ottenere un nuovo array dove salvo solo messages con status receive
     lastMsgDate(index) {
