@@ -378,6 +378,30 @@ body {
   margin-left: auto;
 }
 
+.remove {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  width: 150px;
+  position: absolute;
+  right: 5%;
+  bottom: -40px;
+  z-index: 1;
+}
+
+.remove ul {
+  list-style: none;
+  cursor: pointer;
+}
+
+.remove ul li{
+  padding: 3px;
+}
+
+.remove ul li:hover{
+  background-color: lightgray;
+}
+
 /* CONTAINER RIGHT FOOTER */
 
 .container .right footer {

@@ -55,8 +55,16 @@
           class="notice-logo float-left"
         >
           <!-- ...grazie all'utilizzo di un flag -->
-          <i v-if="notice === false" class="fas fa-bell-slash"></i>
-          <i v-else class="fas fa-bell"></i>
+          <i 
+            v-if="notice === false" 
+            class="fas fa-bell-slash"
+          >
+          </i>
+          <i 
+            v-else
+            class="fas fa-bell"
+          >
+          </i>
         </div>
         <div class="notice-text float-left">
           <p>Ricevi notifiche di nuovi messaggi</p>
@@ -76,7 +84,8 @@
           <i class="fas fa-search"></i>
           <input 
             v-model.trim="searchName"
-            @keyup.enter="fSearch()"
+            @keyup="fSearch()"
+            @keyup.enter="reset()"
             type="text" 
             placeholder="Cerca o inizia una nuova chat"
           >
@@ -147,7 +156,18 @@
           <p>
             {{message.date}}
           </p>
-          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-chevron-down"
+            @click="removeIt()"
+          ></i>
+          <div 
+            v-if="removeMenu === true" 
+            class="remove"
+          >
+            <ul>
+              <li>info</li>
+              <li @click="removeMsg(activeUser)">elimina messaggio</li>
+            </ul>
+          </div>
         </div>
 
         <!-- <div class="msg received">
