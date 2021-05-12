@@ -109,6 +109,15 @@ const app = new Vue({
         ],
       },
     ],
+    risposte: [
+      "Perfetto! \ud83d\ude4c ",
+      "Non sono d'accordo",
+      "Daje!!!",
+      "Marmellata \ud83d\ude0e",
+      "OMG \ud83d\ude31",
+      "A domani",
+      "Ok \ud83d\ude09"
+    ],
   },
   methods: {
     // funzione che carica dinamicamente gli avatr
@@ -147,20 +156,22 @@ const app = new Vue({
     },
     // funzione che fa il push dentro l'array messages di msgUtente, dello status e di date
     addMsg(index) {
-      this.contacts[index].messages.push({
-        text: this.msgUtente,
-        status: "sent",
-        date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
-      });
-      this.msgUtente = "";
-      // imposto un messaggio standard con status received che compare dopo 1 secondo
-      setTimeout(() => {
+      if(this.msgUtente.length>0){
         this.contacts[index].messages.push({
-          text: "Ok \ud83d\ude09",
-          status: "received",
+          text: this.msgUtente,
+          status: "sent",
           date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
         });
-      }, 1000);
+        this.msgUtente = "";
+        // imposto un messaggio standard con status received che compare dopo 1 secondo
+        setTimeout(() => {
+          this.contacts[index].messages.push({
+            text: this.risposte[Math.floor(Math.random() * this.risposte.length)],
+            status: "received",
+            date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
+          });
+        }, 1000);
+      }
     },
     // funzione che trasforma notice nel suo contrario. La applico al click sulla sezione notice-logo (HTML) e con un v-if mostro un font awsome al posto dell'altro
     sendNote() {

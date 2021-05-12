@@ -30,7 +30,8 @@
         <div class="header-left float-left">
           <!-- aggiungo dinamicamente l'avatar utente -->
           <img 
-             :src="'assets/img/avatar' + user.avatar + '.jpg'" :alt="user.name"
+             :src="'assets/img/avatar' + user.avatar + '.jpg'" 
+             :alt="user.name"
           >
           <span>{{user.name}}</span>
         </div>
@@ -69,7 +70,7 @@
         <div class="search">
           <i class="fas fa-search"></i>
           <input 
-             v-model="searchName"
+             v-model.trim="searchName"
              @keyup.enter="fSearch()"
              type="text" 
              placeholder="Cerca o inizia una nuova chat"
@@ -169,8 +170,9 @@
         <a href="#"><i class="far fa-smile"></i></a>
         <!-- 1 collego il campo input alla variabile msgUtente -->
         <!-- 2 al keyup su invio attivo la funzione addMsg -->
+        <!-- .trim troglie gli spazi in eccesso -->
         <input 
-           v-model="msgUtente" 
+           v-model.trim="msgUtente" 
            @keyup.enter="addMsg(activeUser)" 
            type="text" 
            placeholder="Scrivi un messaggio"
